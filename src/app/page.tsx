@@ -1,103 +1,40 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-blue-100 to-pink-100 flex flex-col items-center justify-center p-6">
+      <div className="flex flex-col items-center gap-6 max-w-xl w-full">
+        <Image src="/game_logo.png" alt="Pokémon DSA Adventure" width={320} height={100} className="mb-2" />
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-yellow-700 drop-shadow-lg">🏆 Become the Algorithm Champion!</h1>
+        <p className="text-lg sm:text-xl text-center text-blue-900 font-semibold">Welcome, Code Trainer!&lt;br/&gt;Catch algorithms, evolve your coding skills, and challenge Gym Leaders on your quest to become the ultimate Algorithm Champion!</p>
+        <div className="flex flex-wrap gap-4 justify-center mt-4">
+          <Link href="/pokedex" className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full shadow transition">Explore Pokédex</Link>
+          <a href="#regions" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow transition">Choose Region</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div id="regions" className="mt-10 w-full flex flex-col gap-4">
+          <h2 className="text-2xl font-bold text-center text-indigo-700">🌍 Regions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <Link href="/region/kanto" className="bg-white/80 rounded-lg p-4 shadow border-l-4 border-yellow-400 hover:bg-yellow-100 transition block">
+    <h3 className="font-bold text-lg text-yellow-700">Kanto Region</h3>
+    <p className="text-sm text-gray-700">SALT HUGS FB — Basic Data Structures</p>
+  </Link>
+  <Link href="/region/johto" className="bg-white/80 rounded-lg p-4 shadow border-l-4 border-blue-400 hover:bg-blue-100 transition block">
+    <h3 className="font-bold text-lg text-blue-700">Johto Region</h3>
+    <p className="text-sm text-gray-700">OF DUBS BGMT — Algorithm Patterns</p>
+  </Link>
+  <Link href="/region/hoenn" className="bg-white/80 rounded-lg p-4 shadow border-l-4 border-green-400 hover:bg-green-100 transition block">
+    <h3 className="font-bold text-lg text-green-700">Hoenn Region</h3>
+    <p className="text-sm text-gray-700">QMBRIS — Sorting Mastery</p>
+  </Link>
+  <Link href="/region/sinnoh" className="bg-white/80 rounded-lg p-4 shadow border-l-4 border-pink-400 hover:bg-pink-100 transition block">
+    <h3 className="font-bold text-lg text-pink-700">Sinnoh Region</h3>
+    <p className="text-sm text-gray-700">String/Math — Special Type Algorithms</p>
+  </Link>
+</div>
+        </div>
+        <div className="mt-10 text-center text-gray-600 text-sm italic">&quot;Gotta catch &#39;em all!&quot; — Start your adventure and master every algorithm!</div>
+      </div>
     </div>
   );
 }
