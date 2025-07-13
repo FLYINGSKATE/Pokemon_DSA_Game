@@ -14,6 +14,7 @@ export default function RegionPage() {
   const regionDisplay = region.charAt(0).toUpperCase() + region.slice(1);
   const [modalOpen, setModalOpen] = useState(false);
   const [victoryMsg, setVictoryMsg] = useState("");
+  const [selectedPoke, setSelectedPoke] = useState<PokeAlgo | null>(null);
   const { team, addToTeam, removeFromTeam } = useTeam();
   const regionPokedex = pokedexData.filter((poke: PokeAlgo) => poke.region.toLowerCase() === region);
 
@@ -52,6 +53,7 @@ export default function RegionPage() {
                       className="mt-1 w-fit bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 rounded-full transition"
                       onClick={() => {
                         setVictoryMsg(`🎉 You defeated '${prob.title}' with ${poke.name}! It's super effective!`);
+                        setSelectedPoke(poke);
                         setModalOpen(true);
                       }}
                     >
@@ -70,13 +72,13 @@ export default function RegionPage() {
           </div>
         ))}
       </div>
-      {modalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50" onClick={() => setModalOpen(false)}>
+      {modalOpen && selectedPoke && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50" onClick={() => { setModalOpen(false); setSelectedPoke(null); }}>
           <div className="bg-white rounded-xl shadow-lg p-8 max-w-sm w-full flex flex-col items-center gap-4 relative" onClick={e => e.stopPropagation()}>
             <span className="text-3xl">🏅</span>
             <div className="text-xl font-bold text-green-700 text-center">{victoryMsg}</div>
-            <button className="ml-1 text-xs text-red-600 hover:text-red-800 font-bold" onClick={() => removeFromTeam(poke.name)} title="Remove">×</button>
-            <button className="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-full" onClick={() => setModalOpen(false)}>Close</button>
+            <button className="ml-1 text-xs text-red-600 hover:text-red-800 font-bold" onClick={() => removeFromTeam(selectedPoke.name)} title="Remove">×</button>
+            <button className="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-full" onClick={() => { setModalOpen(false); setSelectedPoke(null); }}>Close</button>
           </div>
         </div>
       )}
